@@ -78,8 +78,6 @@ The course VM only exposes ports 22 (SSH) and 80 (pgAdmin web), so Postgres is n
 ssh -N -L 5433:127.0.0.1:5432 student@134.117.135.22
 ```
 
-Then set `DB_HOST=127.0.0.1` and `DB_PORT=5433` in `.env`.
-
 ### 4. Run
 
 ```bash
