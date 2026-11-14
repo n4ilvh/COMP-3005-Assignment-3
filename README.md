@@ -52,18 +52,7 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Set up the database
-
-1. In pgAdmin (or `psql`), create a database named `student_db`.
-2. Open the Query Tool on `student_db` and run the contents of `postgres-student-crud/database/schema.sql`.
-
-   Or from the command line:
-
-   ```bash
-   psql -U postgres -d student_db -f postgres-student-crud/database/schema.sql
-   ```
-
-### 3. Configure credentials
+### 2. Configure credentials
 
 Copy `.env.example` to `.env` in the project root and fill in your values:
 
@@ -73,13 +62,23 @@ cp .env.example .env
 
 ```
 DB_HOST=127.0.0.1
-DB_PORT=5432
+DB_PORT=5433
 DB_NAME=student_db
 DB_USER=postgres
-DB_PASSWORD=your_password_here
+DB_PASSWORD=basketball727
 ```
 
 `.env` is listed in `.gitignore`, so credentials are never committed.
+
+### 3.: using the SCS OpenStack VM
+
+The course VM only exposes ports 22 (SSH) and 80 (pgAdmin web), so Postgres is not directly reachable. Connect to the Carleton VPN, open an SSH tunnel, and leave that terminal running:
+
+```bash
+ssh -N -L 5433:127.0.0.1:5432 student@134.117.135.22
+```
+
+Then set `DB_HOST=127.0.0.1` and `DB_PORT=5433` in `.env`.
 
 ### 4. Run
 
@@ -101,15 +100,7 @@ Menu:
 
 Enter the number of the operation you want. Dates are entered as `YYYY-MM-DD`.
 
-### Optional: using the SCS OpenStack VM
 
-The course VM only exposes ports 22 (SSH) and 80 (pgAdmin web), so Postgres is not directly reachable. Connect to the Carleton VPN, open an SSH tunnel, and leave that terminal running:
-
-```bash
-ssh -N -L 5433:127.0.0.1:5432 student@134.117.135.22
-```
-
-Then set `DB_HOST=127.0.0.1` and `DB_PORT=5433` in `.env`.
 
 ## Functions (`postgres-student-crud/app/database.py`)
 
