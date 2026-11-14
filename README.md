@@ -2,7 +2,7 @@
 
 A command-line Python application that connects to a PostgreSQL database and performs CRUD (Create, Read, Update, Delete) operations on a `students` table.
 
-**Demonstration video:** [ADD YOUR VIDEO LINK HERE]
+**Demonstration video:** [Youtube](https://www.youtube.com/watch?v=iQeQJ4aCdOI)
 
 ## Technologies
 
